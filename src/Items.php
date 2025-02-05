@@ -55,7 +55,7 @@ class Items extends Field
 
         if (is_null($this->fillCallback)) {
             $this->fillUsing(function ($request, $model, $attribute, $requestAttribute) {
-                $model->$attribute = $this->isValidNullValue($request->$attribute) ? null : json_decode($request->$attribute, true);
+                $model->$attribute = $this->isValidNullValue($request->input($attribute)) ? null : json_decode($request->input($attribute), true);
             });
         }
 
